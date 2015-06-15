@@ -1,4 +1,4 @@
-FROM bitcoin-dev:latest
+FROM cdecker/bitcoin-dev:latest
 RUN sed 's/main$/main universe/' -i /etc/apt/sources.list && \
     apt-get update && apt-get install -y software-properties-common && \
     add-apt-repository ppa:webupd8team/java -y && \
