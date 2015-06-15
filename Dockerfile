@@ -1,6 +1,6 @@
 FROM ubuntu:14.04
 RUN apt-get update;\
-	apt-get install -y build-essential libtool autotools-dev autoconf pkg-config libssl-dev libboost-all-dev wget bsdmainutils libqrencode-dev libqt4-dev libprotobuf-dev protobuf-compiler git-core openjdk-7-jdk;\
+	apt-get install -y build-essential libtool autotools-dev autoconf pkg-config libssl-dev libboost-all-dev wget bsdmainutils libqrencode-dev libqt4-dev libprotobuf-dev protobuf-compiler git-core openjdk-7-jdk gdb;\
 	apt-get clean;\
 	rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 ADD bdb.sh /tmp/
