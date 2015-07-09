@@ -18,6 +18,7 @@ RUN mkdir -p /home/developer && \
     echo "developer ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/developer && \
     chmod 0440 /etc/sudoers.d/developer && \
     chown developer:developer -R /home/developer
+RUN echo 0 > /proc/sys/kernel/yama/ptrace_scope
 ENV HOME /home/developer
 RUN mkdir /bitcoin; chown -R developer:developer /bitcoin
 WORKDIR /bitcoin
