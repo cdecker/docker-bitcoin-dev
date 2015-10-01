@@ -5,6 +5,7 @@ RUN apt-get update;\
 		libtool \
 		autotools-dev \
 		autoconf \
+		ccache \
 		pkg-config \
 		libssl-dev \
 		libboost-all-dev \
