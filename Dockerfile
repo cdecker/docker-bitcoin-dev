@@ -1,10 +1,27 @@
 FROM ubuntu:14.04
 RUN apt-get update;\
-	apt-get install -y build-essential libtool autotools-dev autoconf pkg-config libssl-dev libboost-all-dev wget bsdmainutils libqrencode-dev libqt4-dev libprotobuf-dev protobuf-compiler git-core openjdk-7-jdk gdb;\
+	apt-get install -y \
+		build-essential \
+		libtool \
+		autotools-dev \
+		autoconf \
+		pkg-config \
+		libssl-dev \
+		libboost-all-dev \
+		wget \
+		bsdmainutils \
+		libqrencode-dev \
+		libqt4-dev \
+		libprotobuf-dev \
+		protobuf-compiler \
+		git-core \
+		openjdk-7-jdk \
+		gdb \
+		libevent-dev;\
 	apt-get clean;\
 	rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 ADD bdb.sh /tmp/
-RUN chmod +x /tmp/bdb.sh; /tmp/bdb.sh
+RUN sh /tmp/bdb.sh
 RUN wget "http://miniupnp.tuxfamily.org/files/download.php?file=miniupnpc-1.6.tar.gz" -O miniupnpc-1.6.tar.gz;\
 	tar -xzvf miniupnpc-1.6.tar.gz; \
 	cd miniupnpc-1.6; \
@@ -18,7 +35,7 @@ RUN mkdir -p /home/developer && \
     echo "developer ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/developer && \
     chmod 0440 /etc/sudoers.d/developer && \
     chown developer:developer -R /home/developer
-RUN echo 0 > /proc/sys/kernel/yama/ptrace_scope
+#RUN echo 0 > /proc/sys/kernel/yama/ptrace_scope
 ENV HOME /home/developer
 RUN mkdir /bitcoin; chown -R developer:developer /bitcoin
 WORKDIR /bitcoin
